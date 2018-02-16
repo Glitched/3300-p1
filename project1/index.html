@@ -1,10 +1,50 @@
 <html>
-	<head>
-		<title>P1</title>
-	</head>
-	<body>
-		<script>
-			
-		</script>
-	</body>
+
+<head>
+	<title>P1</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+	<script>
+		d3.csv("ks-projects-201801.csv", function (data) {
+
+			data.forEach(function (project) {
+				// Convert String values to numbers
+				project["ID"] = +project["ID"];
+				project.goal = +project.goal;
+				project.pledged = +project.pledged;
+				project.backers = +project.backers;
+				project["usd pledged"] = +project["usd pledged"];
+				project.backers = +project.backers;
+				project.usd_pledged_real = +project.usd_pledged_real;
+				project.usd_goal_real = +project.usd_goal_real;
+
+				// Convert String values to dates
+				project.deadline = new Date(project.deadline);
+				project.launched = new Date(project.launched);
+			});
+
+			// Data row type
+			// "ID": number
+			// "name": string
+			// "category": string
+			// "main_category": string
+			// "currency": string
+			// "deadline": date
+			// "goal": number
+			// "launched": date 
+			// "pledged": number
+			// "state": string
+			// "backers": number
+			// "country": string
+			// "usd pledged": number
+			// "usd_pledged_real": number
+			// "usd_goal_real": number
+
+			console.log(data[5]);
+		});
+	</script>
+</body>
+
 </html>
