@@ -7,7 +7,9 @@
 
 <body>
 	<script>
+		monthlyData = {}
 		d3.csv("ks-projects-201801.csv", function (data) {
+
 
 			data.forEach(function (project) {
 				// Convert String values to numbers
@@ -23,7 +25,17 @@
 				// Convert String values to dates
 				project.deadline = new Date(project.deadline);
 				project.launched = new Date(project.launched);
+				year = project.deadline.getFullYear()
+				month = project.deadline.getMonth()
+				if (!(year in monthlyData)) {
+					monthlyData[year] = {}
+				}
+				if (!(month in monthlyData[year])) {
+					monthlyData[year][month] = []
+				}
+				monthlyData[year][month].push(project)
 			});
+
 
 			// Data row type
 			// "ID": number
