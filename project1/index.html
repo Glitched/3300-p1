@@ -8,8 +8,9 @@
 <body>
 	<script>
 		monthlyData = {}
-		d3.csv("ks-projects-201801.csv", function (data) {
+		monthlyAverages = {}
 
+		d3.csv("ks-projects-201801.csv", function (data) {
 
 			data.forEach(function (project) {
 				// Convert String values to numbers
@@ -25,8 +26,11 @@
 				// Convert String values to dates
 				project.deadline = new Date(project.deadline);
 				project.launched = new Date(project.launched);
+
+				// Bin by year and month
 				year = project.deadline.getFullYear()
 				month = project.deadline.getMonth()
+
 				if (!(year in monthlyData)) {
 					monthlyData[year] = {}
 				}
@@ -34,6 +38,27 @@
 					monthlyData[year][month] = []
 				}
 				monthlyData[year][month].push(project)
+			});
+
+			// Generate average data per month
+			Object.keys(monthlyData).forEach(function (year) {
+
+				monthlyAverages[year] = {}
+				usd_goal_real = 0
+				usd_pledged_real = 0
+
+				Object.keys(monthlyData[year]).forEach(function (month) {
+					monthlyAverages[year][month] = {}
+
+					monthlyData[year][month].forEach(function (project) {
+						usd_goal_real += project.usd_goal_real
+						usd_pledged_real += project.usd_pledged_real
+					})
+
+					num = monthlyData[year][month].length
+					monthlyAverages[year][month].usd_goal_real = usd_goal_real / num
+					monthlyAverages[year][month].usd_pledged_real = usd_pledged_real / num
+				});
 			});
 
 
