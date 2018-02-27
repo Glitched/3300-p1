@@ -46,6 +46,8 @@
 				monthlyAverages[year] = {}
 				usd_goal_real = 0
 				usd_pledged_real = 0
+				backers = 0
+				funded = 0
 
 				Object.keys(monthlyData[year]).forEach(function (month) {
 					monthlyAverages[year][month] = {}
@@ -53,11 +55,22 @@
 					monthlyData[year][month].forEach(function (project) {
 						usd_goal_real += project.usd_goal_real
 						usd_pledged_real += project.usd_pledged_real
+						backers += project.backers
+						if (project.pledged > project.goal) {
+							funded += 1;
+						}
 					})
 
 					num = monthlyData[year][month].length
-					monthlyAverages[year][month].usd_goal_real = usd_goal_real / num
-					monthlyAverages[year][month].usd_pledged_real = usd_pledged_real / num
+
+					monthlyAverages[year][month].usd_goal_real = usd_goal_real
+					monthlyAverages[year][month].averageUsd_goal_real = usd_goal_real / num
+					monthlyAverages[year][month].usd_pledged_real = usd_pledged_real
+					monthlyAverages[year][month].averageUsd_pledged_real = usd_pledged_real / num
+					monthlyAverages[year][month].backers = backers
+					monthlyAverages[year][month].averageBackers = backers / num
+					monthlyAverages[year][month].funded = funded
+					monthlyAverages[year][month].percentFunded = funded / num
 				});
 			});
 
