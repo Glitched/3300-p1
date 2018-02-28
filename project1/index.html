@@ -8,6 +8,7 @@
 <body>
 	<script>
 		monthlyData = {}
+		monthlySPData = {}
 		monthlyAverages = {}
 
 		d3.csv("ks-projects-201801.csv", function (data) {
@@ -91,7 +92,34 @@
 			// "usd pledged": number
 			// "usd_pledged_real": number
 			// "usd_goal_real": number
+			d3.csv("SPIndex.csv", function (SPData) {
 
+				SPData.forEach(function (day) {
+					// Convert String values to numbers
+					day.adjclose = +day.adjclose
+					day.close = +day.close
+					day.high = +day.high
+					day.low = +day.low
+					day.volume = +day.volume
+					day.open = +day.open
+
+					// Convert String values to dates
+					day.Date = new Date(day.Date);
+
+					// Bin by year and month
+					year = day.Date.getFullYear()
+					month = day.Date.getMonth()
+
+					if (!(year in monthlySPData)) {
+						monthlySPData[year] = {}
+					}
+					if (!(month in monthlySPData[year])) {
+						monthlySPData[year][month] = []
+					}
+					monthlySPData[year][month].push(day)
+				});
+				console.log(SPData);
+			});
 			console.log(data[5]);
 		});
 	</script>
