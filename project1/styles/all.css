@@ -28,11 +28,22 @@ font-size: 30px;
 }
 
 svg {
-  background-color: white;
   background-color: #222;
   margin: 40px auto;
   display: block;
+  padding: 40px;
 }
+.axis line{
+  stroke: #ccc;
+}
+
+.axis path{
+  stroke: #ccc;
+}
+
+.axis text{
+  fill: #ccc;
+}  
 
 p{
 color: white;
