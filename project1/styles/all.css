@@ -1,0 +1,29 @@
+/* sets default margin and padding to 0 so there won't  be weird empty space*/
+*{
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family:"Lobster Two";
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+body {
+background-color: black;
+}
+
+h1{
+color: white;
+margin-bottom: 20%;
+text-align: center;
+font-family: "Lobster Two";
+}
+.sourceMaterial{
+font-size: 20px;
+}
+
+.newMaterial{
+font-size: 30px;
+}
+/**/
