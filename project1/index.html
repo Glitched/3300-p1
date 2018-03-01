@@ -156,17 +156,17 @@
 				var ks = d3.scaleLinear().domain([0, 15000]).range([580,20])
 
 				canvas.append("g")
-					.attr("transform", "translate(20,580)")
+					.attr("transform", "translate(60,620)")
 					.call(d3.axisBottom(time))
 					.attr("class", "axis")
 
 				canvas.append("g")
-					.attr("transform", "translate(20,0)")
+					.attr("transform", "translate(60,40)")
 					.call(d3.axisLeft(sp))
 					.attr("class", "axis")
 
 				canvas.append("g")
-					.attr("transform", "translate(780,0)")
+					.attr("transform", "translate(820,40)")
 					.call(d3.axisRight(ks))
 					.attr("class", "axis")
 
@@ -180,7 +180,7 @@
 					.attr("d", spLine)
 					.attr("fill", "none")
 					.attr("stroke", "lightgreen")
-					.attr("transform", "translate(20,0)")
+					.attr("transform", "translate(60,40)")
 
 				var ksLine = d3.line()
 					.x(function(d) { return time(d.date); })
@@ -192,12 +192,12 @@
 					.attr("d", ksLine)
 					.attr("fill", "none")
 					.attr("stroke", "Fuchsia")
-					.attr("transform", "translate(20,0)")
+					.attr("transform", "translate(60,40)")
 
 			});
 		});
 	</script>
-	<svg id="canvas" width="800" height="600"></svg>
+	<svg id="canvas" width="880" height="680"></svg>
 </body>
 
 </html>
