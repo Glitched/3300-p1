@@ -10,9 +10,10 @@
 		monthlyData = {}
 		monthlySPData = {}
 		monthlyAverages = {}
+		rawData = {}
 
 		d3.csv("ks-projects-201801.csv", function (data) {
-
+			rawData = data
 			data.forEach(function (project) {
 				// Convert String values to numbers
 				project["ID"] = +project["ID"];
@@ -52,6 +53,11 @@
 
 				Object.keys(monthlyData[year]).forEach(function (month) {
 					monthlyAverages[year][month] = {}
+
+					usd_goal_real = 0
+					usd_pledged_real = 0
+					backers = 0
+					funded = 0
 
 					monthlyData[year][month].forEach(function (project) {
 						usd_goal_real += project.usd_goal_real
