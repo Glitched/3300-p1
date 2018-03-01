@@ -124,11 +124,14 @@
 					}
 					monthlySPData[year][month].push(day)
 				});
-				console.log(SPData);
+
+				// Plotting begins here
+				canvas = d3.select("#canvas")
+				
 			});
-			console.log(data[5]);
 		});
 	</script>
+	<svg id="canvas" width="800" height="600"></svg>
 </body>
 
 </html>
