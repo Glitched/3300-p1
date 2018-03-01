@@ -53,6 +53,8 @@ svg {
   background-color: #222;
   margin: 40px auto;
   display: block;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .axis line{

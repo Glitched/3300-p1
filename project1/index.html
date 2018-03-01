@@ -194,6 +194,24 @@
 					.attr("stroke", "Fuchsia")
 					.attr("transform", "translate(60,40)")
 
+				canvas.append("text")             
+					.attr("transform", "translate(440,660)")
+					.style("text-anchor", "middle")
+					.text("Date")
+					.attr("fill","#cccccc");
+
+				canvas.append("text")             
+					.attr("transform", "translate(870,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("Kickstarter Average Real USD Pledged")
+					.attr("fill","#cccccc");
+
+				canvas.append("text")             
+					.attr("transform", "translate(10,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("S&P 500 Index")
+					.attr("fill","#cccccc");
+
 			});
 		});
 	</script>
