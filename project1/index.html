@@ -36,6 +36,7 @@
 		monthlySPData = {}
 		monthlyAverages = {}
 		rawData = {}
+		ksPlotData = []
 
 		d3.csv("ks-projects-201801.csv", function (data) {
 			rawData = data
@@ -66,7 +67,6 @@
 				}
 				monthlyData[year][month].push(project)
 			});
-
 			// Generate average data per month
 			Object.keys(monthlyData).forEach(function (year) {
 
@@ -103,6 +103,16 @@
 					monthlyAverages[year][month].averageBackers = backers / num
 					monthlyAverages[year][month].funded = funded
 					monthlyAverages[year][month].percentFunded = funded / num
+
+					var beginning = new Date("1/1/2010");
+					var end = new Date("1/1/2017");
+					humanMonth = Number(month) + 1
+					var currentDate = new Date(humanMonth + "/1/" + year)
+
+					if (currentDate > beginning && currentDate < end) {
+						ksPlotData.push({date: currentDate, usd: usd_pledged_real / num})					
+					}
+
 				});
 			});
 
@@ -123,8 +133,8 @@
 			// "usd pledged": number
 			// "usd_pledged_real": number
 			// "usd_goal_real": number
+			spPlotData = []
 			d3.csv("SPIndex.csv", function (SPData) {
-
 				SPData.forEach(function (day) {
 					// Convert String values to numbers
 					day.adjclose = +day.adjclose
@@ -148,12 +158,20 @@
 						monthlySPData[year][month] = []
 					}
 					monthlySPData[year][month].push(day)
+
+					var beginning = new Date("1/1/2010");
+					var end = new Date("1/1/2017");
+
+					if (day.Date > beginning && day.Date < end) {
+						spPlotData.push(day)
+					}
 				});
 
 				// Plotting begins here
 				canvas = d3.select("#canvas")
 				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range([0,760])
-				var sp = d3.scaleLinear().domain([0, 2500]).range([580,20])
+				var sp = d3.scaleLinear().domain([0, 2400]).range([580,20])
+				var ks = d3.scaleLinear().domain([0, 15000]).range([580,20])
 
 				canvas.append("g")
 					.attr("transform", "translate(20,580)")
@@ -164,6 +182,35 @@
 					.attr("transform", "translate(20,0)")
 					.call(d3.axisLeft(sp))
 					.attr("class", "axis")
+
+				canvas.append("g")
+					.attr("transform", "translate(780,0)")
+					.call(d3.axisRight(ks))
+					.attr("class", "axis")
+
+				var spLine = d3.line()
+					.x(function(d) { return time(d.Date); })
+					.y(function(d) { return sp(d.open); });
+
+				canvas.append("path")
+					.data([spPlotData])
+					.attr("class", "sp")
+					.attr("d", spLine)
+					.attr("fill", "none")
+					.attr("stroke", "lightgreen")
+					.attr("transform", "translate(20,0)")
+
+				var ksLine = d3.line()
+					.x(function(d) { return time(d.date); })
+					.y(function(d) { return ks(d.usd); });
+
+				canvas.append("path")
+					.data([ksPlotData])
+					.attr("class", "sp")
+					.attr("d", ksLine)
+					.attr("fill", "none")
+					.attr("stroke", "Fuchsia")
+					.attr("transform", "translate(20,0)")
 
 			});
 		});
