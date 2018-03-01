@@ -6,8 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="styles/all.css" media="all"/>
 	<style>
 	svg {
-		background-color: white;
+		background-color: #222;
+		margin: 40px auto;
+		display: block;
 	}
+	.axis line{
+		stroke: #ccc;
+	}
+
+	.axis path{
+		stroke: #ccc;
+	}
+
+	.axis text{
+		fill: #ccc;
+	}  
 	</style>
 </head>
 
@@ -140,6 +153,7 @@
 				canvas.append("g")
 					.attr("transform", "translate(20,580)")
 					.call(d3.axisBottom(time))
+					.attr("class", "axis")
 
 			});
 		});
