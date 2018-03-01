@@ -27,6 +27,14 @@ font-size: 20px;
 font-size: 30px;
 }
 
-svg { 
-  background-color: white; 
+svg {
+  background-color: white;
+  background-color: #222;
+  margin: 40px auto;
+  display: block;
+}
+
+p{
+color: white;
+margin-left: 25%;
 }
