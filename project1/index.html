@@ -92,7 +92,7 @@
 					var currentDate = new Date(humanMonth + "/1/" + year)
 
 					if (currentDate > beginning && currentDate < end) {
-						ksPlotData.push({date: currentDate, usd: usd_pledged_real / num})					
+						ksPlotData.push({date: currentDate, usd: usd_pledged_real / num})
 					}
 
 				});
@@ -180,6 +180,7 @@
 					.attr("d", spLine)
 					.attr("fill", "none")
 					.attr("stroke", "lightgreen")
+					.attr("stroke-width", "2")
 					.attr("transform", "translate(60,40)")
 
 				var ksLine = d3.line()
@@ -192,21 +193,22 @@
 					.attr("d", ksLine)
 					.attr("fill", "none")
 					.attr("stroke", "Fuchsia")
+					.attr("stroke-width", "2")
 					.attr("transform", "translate(60,40)")
 
-				canvas.append("text")             
+				canvas.append("text")
 					.attr("transform", "translate(440,660)")
 					.style("text-anchor", "middle")
 					.text("Date")
 					.attr("fill","#cccccc");
 
-				canvas.append("text")             
+				canvas.append("text")
 					.attr("transform", "translate(870,340), rotate(90)")
 					.style("text-anchor", "middle")
 					.text("Kickstarter Average Real USD Pledged")
 					.attr("fill","#cccccc");
 
-				canvas.append("text")             
+				canvas.append("text")
 					.attr("transform", "translate(10,340), rotate(90)")
 					.style("text-anchor", "middle")
 					.text("S&P 500 Index")
