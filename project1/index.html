@@ -9,6 +9,7 @@
 		background-color: #222;
 		margin: 40px auto;
 		display: block;
+		padding: 40px;
 	}
 	.axis line{
 		stroke: #ccc;
@@ -152,9 +153,16 @@
 				// Plotting begins here
 				canvas = d3.select("#canvas")
 				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range([0,760])
+				var sp = d3.scaleLinear().domain([0, 2500]).range([580,20])
+
 				canvas.append("g")
 					.attr("transform", "translate(20,580)")
 					.call(d3.axisBottom(time))
+					.attr("class", "axis")
+
+				canvas.append("g")
+					.attr("transform", "translate(20,0)")
+					.call(d3.axisLeft(sp))
 					.attr("class", "axis")
 
 			});
