@@ -1,8 +1,14 @@
+
+/* Kickstarter green #86C543
+  Kickstarter white #FEFEFE
+  */
+
 /* sets default margin and padding to 0 so there won't  be weird empty space*/
 *{
   margin: 0;
   padding: 0;
 }
+
 
 @font-face {
   font-family:"Lobster Two";
@@ -11,22 +17,53 @@
 
 body {
 background-color: black;
+transform: scale(0.95);
+transform-origin: 0 0;
 }
 
 h1{
 color: white;
-margin-bottom: 20%;
 text-align: center;
 font-family: "Lobster Two";
+color: #86C543;
 }
+
+p{
+color: white;
+width: 100%;
+text-align: center;
+}
+
+
+/* the S&P 500 and kickstarter data presented independently */
 .sourceMaterial{
 font-size: 20px;
+margin-bottom: 20%;
+color: #FEFEFE;
 }
+
+/* the S&P 500 and kickstarter data presented togeather */
 
 .newMaterial{
 font-size: 30px;
+color: #86C543;
 }
 
-svg { 
-  background-color: white; 
+svg {
+  background-color: #222;
+  margin: 40px auto;
+  display: block;
+  padding: 40px;
+}
+
+.axis line{
+  stroke: #ccc;
+}
+
+.axis path{
+  stroke: #ccc;
+}
+
+.axis text{
+  fill: #ccc;
 }
