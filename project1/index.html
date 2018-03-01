@@ -4,6 +4,11 @@
 	<title>Kickstarter to US Economy</title>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/all.css" media="all"/>
+	<style>
+	svg {
+		background-color: white;
+	}
+	</style>
 </head>
 
 <body>
@@ -131,9 +136,9 @@
 
 				// Plotting begins here
 				canvas = d3.select("#canvas")
-				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range(0,800)
+				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range([0,760])
 				canvas.append("g")
-					.attr("transform", "translate(30,30)")
+					.attr("transform", "translate(20,580)")
 					.call(d3.axisBottom(time))
 
 			});
