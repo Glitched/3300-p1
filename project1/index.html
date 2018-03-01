@@ -127,7 +127,11 @@
 
 				// Plotting begins here
 				canvas = d3.select("#canvas")
-				
+				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range(0,800)
+				canvas.append("g")
+					.attr("transform", "translate(30,30)")
+					.call(d3.axisBottom(time))
+
 			});
 		});
 	</script>
