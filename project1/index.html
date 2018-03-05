@@ -92,7 +92,12 @@
 					var currentDate = new Date(humanMonth + "/1/" + year)
 
 					if (currentDate > beginning && currentDate < end) {
-						ksPlotData.push({date: currentDate, usd: usd_pledged_real / num})
+						ksPlotData.push({
+							date: currentDate,
+							usd: usd_pledged_real / num,
+							percentFunded: funded / num,
+							realGoal: usd_goal_real / num
+						})
 					}
 
 				});
@@ -151,9 +156,12 @@
 
 				// Plotting begins here
 				canvas = d3.select("#canvas")
+
 				var time = d3.scaleTime().domain([new Date("1/1/2010"), new Date("1/1/2017")]).range([0,760])
 				var sp = d3.scaleLinear().domain([0, 2400]).range([580,20])
 				var ks = d3.scaleLinear().domain([0, 15000]).range([580,20])
+				var ps = d3.scaleLinear().domain([0, 1]).range([580,20])
+				var kg = d3.scaleLinear().domain([0, 100000]).range([580,20])
 
 				canvas.append("g")
 					.attr("transform", "translate(60,620)")
@@ -172,7 +180,7 @@
 
 				var spLine = d3.line()
 					.x(function(d) { return time(d.Date); })
-					.y(function(d) { return sp(d.open); });
+					.y(function(d) { return sp(d.adjclose); });
 
 				canvas.append("path")
 					.data([spPlotData])
@@ -214,10 +222,131 @@
 					.text("S&P 500 Index")
 					.attr("fill","#cccccc");
 
+
+				canvas2 = d3.select("#canvas2")
+
+				canvas2.append("g")
+					.attr("transform", "translate(60,620)")
+					.call(d3.axisBottom(time))
+					.attr("class", "axis")
+
+				canvas2.append("g")
+					.attr("transform", "translate(60,40)")
+					.call(d3.axisLeft(sp))
+					.attr("class", "axis")
+
+				canvas2.append("path")
+					.data([spPlotData])
+					.attr("class", "sp")
+					.attr("d", spLine)
+					.attr("fill", "none")
+					.attr("stroke", "lightgreen")
+					.attr("stroke-width", "2")
+					.attr("transform", "translate(60,40)")
+
+				canvas2.append("text")
+					.attr("transform", "translate(440,660)")
+					.style("text-anchor", "middle")
+					.text("Date")
+					.attr("fill","#cccccc");
+
+				canvas2.append("text")
+					.attr("transform", "translate(10,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("S&P 500 Index")
+					.attr("fill","#cccccc")
+
+				var percentFundedLine = d3.line()
+					.x(function(d) { return time(d.date); })
+					.y(function(d) { return ps(d.percentFunded); });
+
+				canvas2.append("path")
+					.data([ksPlotData])
+					.attr("class", "sp")
+					.attr("d", percentFundedLine)
+					.attr("fill", "none")
+					.attr("stroke", "lightblue")
+					.attr("stroke-width", "2")
+					.attr("transform", "translate(60,40)")
+
+				canvas2.append("g")
+					.attr("transform", "translate(820,40)")
+					.call(d3.axisRight(ps))
+					.attr("class", "axis")
+
+				canvas2.append("text")
+					.attr("transform", "translate(870,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("Kickstarter Monthly Percent Funded")
+					.attr("fill","#cccccc");
+
+				canvas3 = d3.select("#canvas3")
+
+				canvas3.append("g")
+					.attr("transform", "translate(60,620)")
+					.call(d3.axisBottom(time))
+					.attr("class", "axis")
+
+				canvas3.append("g")
+					.attr("transform", "translate(60,40)")
+					.call(d3.axisLeft(sp))
+					.attr("class", "axis")
+
+				canvas3.append("path")
+					.data([spPlotData])
+					.attr("class", "sp")
+					.attr("d", spLine)
+					.attr("fill", "none")
+					.attr("stroke", "lightgreen")
+					.attr("stroke-width", "2")
+					.attr("transform", "translate(60,40)")
+
+				canvas3.append("text")
+					.attr("transform", "translate(440,660)")
+					.style("text-anchor", "middle")
+					.text("Date")
+					.attr("fill","#cccccc");
+
+				canvas3.append("text")
+					.attr("transform", "translate(10,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("S&P 500 Index")
+					.attr("fill","#cccccc")
+
+				var realGoalLine = d3.line()
+					.x(function(d) { return time(d.date); })
+					.y(function(d) { return kg(d.realGoal); });
+
+				canvas3.append("path")
+					.data([ksPlotData])
+					.attr("class", "sp")
+					.attr("d", realGoalLine)
+					.attr("fill", "none")
+					.attr("stroke", "orange")
+					.attr("stroke-width", "2")
+					.attr("transform", "translate(60,40)")
+
+				canvas3.append("g")
+					.attr("transform", "translate(820,40)")
+					.call(d3.axisRight(kg))
+					.attr("class", "axis")
+
+				canvas3.append("text")
+					.attr("transform", "translate(870,340), rotate(90)")
+					.style("text-anchor", "middle")
+					.text("Kickstarter Average Real Goal")
+					.attr("fill","#cccccc");
+
+
 			});
 		});
 	</script>
 	<svg id="canvas" width="880" height="680"></svg>
+	<h1 class="newMaterial"> Percent Funded vs. S&amp;P 500 </h1>
+	<svg id="canvas2" width="880" height="680"></svg>
+	<h1 class="newMaterial"> Real USD Goals vs. S&amp;P 500 </h1>
+	<svg id="canvas3" width="880" height="680"></svg>
+
 </body>
 
 </html>
