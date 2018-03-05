@@ -12,7 +12,6 @@
 	<p> A project by Ryan Slama (rms427) and Hamed Rabah (hr277) </p>
 		<!-- <h1 class="sourceMaterial"> US Economy </h1>
 	<h1 class="sourceMaterial"> Kickstarter Projects </h1> -->
-	<h1 class="newMaterial"> Economy & Kickstarter Projects </h1>
 	<script>
 		monthlyData = {}
 		monthlySPData = {}
@@ -317,12 +316,26 @@
 					.x(function(d) { return time(d.date); })
 					.y(function(d) { return kg(d.realGoal); });
 
+				var smoothRealGoalLine = d3.line()
+					.curve(d3.curveBundle.beta(0.75))
+					.x(function(d) { return time(d.date); })
+					.y(function(d) { return kg(d.realGoal); });
+
 				canvas3.append("path")
 					.data([ksPlotData])
 					.attr("class", "sp")
 					.attr("d", realGoalLine)
 					.attr("fill", "none")
-					.attr("stroke", "orange")
+					.attr("stroke", "Salmon")
+					.attr("stroke-width", "2")
+					.attr("transform", "translate(60,40)")
+
+				canvas3.append("path")
+					.data([ksPlotData])
+					.attr("class", "sp")
+					.attr("d", smoothRealGoalLine)
+					.attr("fill", "none")
+					.attr("stroke", "Cyan")
 					.attr("stroke-width", "2")
 					.attr("transform", "translate(60,40)")
 
@@ -341,10 +354,14 @@
 			});
 		});
 	</script>
+	<h1 class="newMaterial"> Economy & Kickstarter Projects </h1>
+	<p class="desc">We chose to analyse whether or not the state of the current economy would change the amount of money being pledged to Kickstarter projects. As an indicator for the current state of the economy, we will be usign the adjusted close price of the S&amp;P 500 index. We will start by comparing it to the average amount of real USD pledged to the average Kickstarter project by month.</p>
 	<svg id="canvas" width="880" height="680"></svg>
 	<h1 class="newMaterial"> Percent Funded vs. S&amp;P 500 </h1>
+	<p class="desc">Interestingly, even as the amount pledged to the average project increased, the percent of projects that hit their goal and recieved funding did not grow. In fact, the percent is lower at the end of 2017 than any time before 2014.</p>
 	<svg id="canvas2" width="880" height="680"></svg>
 	<h1 class="newMaterial"> Real USD Goals vs. S&amp;P 500 </h1>
+	<p class="desc">Since the average amount of funding per project has been trending upward, yet the percent of projects being funded is trending downward, this logically points to one element: goals must be increasing. The original data points are shown in Salmon, while a second line uses a bundle curve to reduce some of the noise in the data.</p>
 	<svg id="canvas3" width="880" height="680"></svg>
 
 </body>

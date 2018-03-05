@@ -35,6 +35,14 @@ width: 100%;
 text-align: center;
 }
 
+p.desc {
+  max-width: 600px;
+  line-height: 1.4;
+  color: #ddd;
+  margin: auto;
+  padding-top: 20px;
+}
+
 
 /* the S&P 500 and kickstarter data presented independently */
 .sourceMaterial{
