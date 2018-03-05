@@ -12,3 +12,5 @@ The next step in my processing was to compute monthly averages for all of the re
 
 ## The Argument
 Our plot compares the slope between the adjusted close value of the S&P 500 and the real USD pledged for the average Kickstarter project this month. The intention is to show that the current state of the economy impacts amount of money that people are willing to spend at potentially risky projects that are many times trivial and may never materialize.
+
+What we found was that as the S&P 500 grows, the number of projects grows along with it, however, there was no connection between the S&P 500 and the monthly success of projects. One factor that may be contributing to this is what we found in our third graph: as the economy (as indicated by the S&P 500) grows, projects tend to request larger amounts of money. 
