@@ -11,4 +11,4 @@ Both datasets were provided in CSV format, and thus D3 interpreted all the value
 The next step in my processing was to compute monthly averages for all of the relevant statistics. For both datasets, I store those averages in a nested Javascript object with keys by year and then by month.
 
 ## The Argument
-Our plot compares the slope between the adjusted close value of the S&P 500 and the real USD pledged for the average Kickstarter project this month. The intention is to show that the current state of the economy impacts amount of money that people are willing to spend at potentially risky projects that are many times trival and may never materialize.
+Our plot compares the slope between the adjusted close value of the S&P 500 and the real USD pledged for the average Kickstarter project this month. The intention is to show that the current state of the economy impacts amount of money that people are willing to spend at potentially risky projects that are many times trivial and may never materialize.

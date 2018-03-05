@@ -53,10 +53,24 @@ color: #FEFEFE;
 
 /* the S&P 500 and kickstarter data presented togeather */
 
-.newMaterial{
-font-size: 30px;
-color: #86C543;
+.labelDiv{ 
+border: 0.5px white dashed;
+opacity:0.9;
+width: 25%;
+float: right;
 }
+
+#label1{ 
+transform: translate(6%,-171%) scale(0.8);
+}
+
+#label2{ 
+  transform: translate(6%,-39%) scale(0.8);
+}
+
+#label3{ 
+  transform: translate(6%,46%) scale(0.8);
+  }
 
 svg {
   background-color: #222;
@@ -64,6 +78,12 @@ svg {
   display: block;
   padding: 10px;
   border-radius: 4px;
+  float:left;
+}
+
+.legendSVG{ 
+background-color:black;
+font-size: 30px;
 }
 
 .axis line{
