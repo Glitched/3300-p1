@@ -357,49 +357,51 @@
 	<h1 class="newMaterial"> Economy &amp; Kickstarter Projects </h1>
 	<p class="desc">We chose to analyse whether or not the state of the current economy would change the amount of money being pledged to Kickstarter projects. As an indicator for the current state of the economy, we will be using the adjusted close price of the S&amp;P 500 index. We will start by comparing it to the average amount of real USD pledged to the average Kickstarter project by month.</p>
 	<svg id="canvas" width="880" height="680"></svg>
-	<p class="desc">Interestingly, even as the amount pledged to the average project increased, the percent of projects that hit their goal and recieved funding <strong>did not</strong> grow. In fact, the percent is lower at the end of 2017 than any time before 2014 (see chart 2). One reason for this might be that as the S&amp;P 500 grew, project goals became more ambitious (see chart 3).</p>
-	
-	<div id="label1" class="labelDiv"> 
-	<h1 class="newMaterial">S&amp;P 500 &amp; Kickstarter Projects </h1>
-	<svg class="legendSVG" width="299" height="180">
-		<rect x="0" y="0" rx="5" ry="5" width="50" height="50"
-		style="fill:lightgreen;stroke:black;stroke-width:1;" />
-		<text x="100" y="35" fill="white" >S&amp;P 500</text>
-		<rect x="0" y="90" rx="5" ry="5" width="50" height="50"
-		style="fill:Fuchsia;stroke:black;stroke-width:1;" />
-		<text x="100" y="130" fill="white">USD Pledged</text>
-	  </svg>
+	<div id="label1" class="labelDiv">
+		<h1 class="newMaterial">S&amp;P 500 &amp; Kickstarter Projects </h1>
+		<svg class="legendSVG" width="400" height="180">
+			<rect x="0" y="0" rx="5" ry="5" width="50" height="50"
+			style="fill:lightgreen;stroke:black;stroke-width:1;" />
+			<text x="100" y="35" fill="white" >S&amp;P 500</text>
+			<rect x="0" y="90" rx="5" ry="5" width="50" height="50"
+			style="fill:Fuchsia;stroke:black;stroke-width:1;" />
+			<text x="100" y="130" fill="white">USD Pledged</text>
+		</svg>
 	</div>
+	<p class="desc">Interestingly, even as the amount pledged to the average project increased, the percent of projects that hit their goal and recieved funding <strong>did not</strong> grow. In fact, the percent is lower at the end of 2017 than any time before 2014 (see chart 2). One reason for this might be that as the S&amp;P 500 grew, project goals became more ambitious (see chart 3).</p>
+
+
 	<svg id="canvas2" width="880" height="680"></svg>
-	<div id="label2" class="labelDiv"> 
+	<div id="label2" class="labelDiv">
 	<h1  class="newMaterial"> Percent Funded vs. S&amp;P 500 </h1>
-	<svg class="legendSVG" width="299" height="180">
+	<svg class="legendSVG" width="400" height="180">
 		<rect x="0" y="0" rx="5" ry="5" width="50" height="50"
 		style="fill:lightgreen;stroke:black;stroke-width:1;" />
 		<text x="100" y="35" fill="white" >S&amp;P 500</text>
 		<rect x="0" y="90" rx="5" ry="5" width="50" height="50"
 		style="fill:lightblue;stroke:black;stroke-width:1;" />
 		<text x="60" y="130" fill="white">% Projects Funded</text>
-	  </svg>
-	</div>
-	
-	<svg id="canvas3" width="880" height="680"></svg>
-	<div id="label3" class="labelDiv"> 
-	<h1 class="newMaterial"> Real USD Goals vs. S&amp;P 500 </h1>
-	<svg class="legendSVG" width="299" height="280">
-		<rect x="0" y="0" rx="5" ry="5" width="50" height="50"
-		style="fill:lightgreen;stroke:black;stroke-width:1;" />
-		<text x="100" y="35" fill="white" >S&amp;P 500</text>
-		<rect x="0" y="90" rx="5" ry="5" width="50" height="50"
-		style="fill:salmon;stroke:black;stroke-width:1;" />
-		<text x="100" y="130" fill="white" >Average Goal</text>
-		<rect x="0" y="185" rx="5" ry="5" width="50" height="50"
-		style="fill:cyan;stroke:black;stroke-width:1;" />
-		<text x="100" y="220" fill="white">Normalized</text>
-
-	  </svg>
+	</svg>
 	</div>
 	<p class="desc">Generally the greater the state of the economy as indicated by the S&amp;P 500, the more ambitious projects became in terms of the amount of their average real goal. </p>
+	<svg id="canvas3" width="880" height="680"></svg>
+
+	<div id="label3" class="labelDiv">
+		<h1 class="newMaterial"> Real USD Goals vs. S&amp;P 500 </h1>
+
+		<svg class="legendSVG" width="400" height="280">
+			<rect x="0" y="0" rx="5" ry="5" width="50" height="50"
+			style="fill:lightgreen;stroke:black;stroke-width:1;" />
+			<text x="100" y="35" fill="white" >S&amp;P 500</text>
+			<rect x="0" y="90" rx="5" ry="5" width="50" height="50"
+			style="fill:salmon;stroke:black;stroke-width:1;" />
+			<text x="100" y="130" fill="white" >Average Goal</text>
+			<rect x="0" y="185" rx="5" ry="5" width="50" height="50"
+			style="fill:cyan;stroke:black;stroke-width:1;" />
+			<text x="100" y="220" fill="white">Normalized</text>
+
+		</svg>
+	</div>
 
 
 </body>

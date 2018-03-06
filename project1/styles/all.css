@@ -46,42 +46,32 @@ p.desc {
 
 /* the S&P 500 and kickstarter data presented independently */
 .sourceMaterial{
-font-size: 20px;
-margin-bottom: 20%;
-color: #FEFEFE;
+  font-size: 20px;
+  margin-bottom: 20%;
+  color: #FEFEFE;
 }
 
 /* the S&P 500 and kickstarter data presented togeather */
 
-.labelDiv{ 
-border: 0.5px white dashed;
-opacity:0.9;
-width: 25%;
-float: right;
+.labelDiv{
+  opacity:0.9;
+  width: 500px;
+  background-color: black;
+  display: block;
+  margin: auto;
+  transform: scale(0.5);
+  height: 200px;
 }
-
-#label1{ 
-transform: translate(6%,-171%) scale(0.8);
-}
-
-#label2{ 
-  transform: translate(6%,-39%) scale(0.8);
-}
-
-#label3{ 
-  transform: translate(6%,46%) scale(0.8);
-  }
 
 svg {
   background-color: #222;
-  margin: 40px auto;
+  margin: 40px auto 0;
   display: block;
   padding: 10px;
   border-radius: 4px;
-  float:left;
 }
 
-.legendSVG{ 
+.legendSVG{
 background-color:black;
 font-size: 30px;
 }
